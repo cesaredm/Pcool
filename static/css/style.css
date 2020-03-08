@@ -1,0 +1,86 @@
+html body
+{
+    /*background-color: rgb(252, 240, 240);*/
+}
+.lateral li a:hover{
+    cursor: pointer;
+    color: salmon;
+}
+.menuPrincipal{
+    /*background-color: #21212150;*/
+   opacity: 0.5;
+}
+.TituloTienda
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 8%;
+}
+.cajaTitulo{
+    box-shadow: 0px 0px 15px #acacac;
+    height: 280px;
+    background-image: url('../img/encabezado.jpg');
+    margin-top: -5%;
+}
+.card{
+    /*box-shadow: 0px 0px 30px #acacac;*/
+}
+.imgDetails
+{
+    box-shadow: 0px 0px 15px #acacac;
+}
+.card-body
+{
+    cursor: pointer;
+}
+.redes a
+{
+    color: black;
+    text-decoration: none;
+    font-size: 150%;
+}
+.redes a:hover
+{
+    color: black;
+    text-decoration: none;
+}
+.categorias{
+    box-shadow: 0px 0px 15px #acacac;
+    background-color: #ff414d;
+}
+.filas2
+{
+    margin-top: 18%;
+}
+.navbar-text
+{
+    margin-left: 300%;
+}
+.submenu
+{
+    opacity: 0.9;
+}
+.dropdown .dropdown-item
+{
+    color: white;
+}
+.dropdown li a:hover{
+    color:black;
+}
+/*estilo para los submenus*/
+.dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+  }

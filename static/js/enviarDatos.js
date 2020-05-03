@@ -44,7 +44,6 @@ $('#formTienda').submit(function (e) {
         }
     });
 });
-
 $('#formProducto').submit(function (e) {
     e.preventDefault();
     $.ajax({

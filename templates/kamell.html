@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-12 border border-2 d-none d-sm-none d-md-block d-lg-block cajaTitulo">
             <div class="">
-                <h1 class="display-3 text-center TituloTienda">
+                <h1 class="display-3 text-center text-white TituloTienda">
                     Tienda Kamell
                 </h1>
          </div>
@@ -28,19 +28,15 @@
                         {% for producto in productos %}
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
                             <div class="card shadow">
-                                <div class="card-header p-1">
+                                <div class="card-header bg-white p-0">
                                     <div class="text-center lead small">
                                         <p>{{producto.1}}</p>
                                     </div>
                                 </div>
-                                    <div class="card-body" data-toggle="modal" data-target="#exampleModalLong">
+                                    <div class="card-body pt-2 pb-2" data-toggle="modal" data-target="#exampleModalLong">
                                         <img src='{{producto.5}}' alt="" class="img-fluid rounded" id='{{producto.0}}'>
                                     </div>
-                                <div class="card-footer text-center bg-white">
-                                    <div class="font-weight-bold d-inline">
-                                        Precio :
-                                    </div>
-                                    {{producto.3}} C$
+                                <div class="card-footer text-center bg-white p-1">
                                     <span class="icon-manitaArriba" id="{{producto.0}}" name="{{producto.6}}"><span id="likes">{{producto.6}}</span></span>
                                 </div>
                             </div>
@@ -104,10 +100,10 @@
                                                                 
                                                             </div>
                                                             <div>
-                                                                <label for="" class="font-weight-bold">
+                                                                <label class="font-weight-bold">
                                                                     Precio:
                                                                 </label>
-                                                                <label for="" id="precio">
+                                                                <label id="precio">
 
                                                                 </label>
                                                             </div>

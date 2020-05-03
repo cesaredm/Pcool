@@ -3,16 +3,16 @@
 <div class="container-fluid">
     <!--titulo de tienda-->
     <div class="row">
-        <div class="col-md-12 col-lg-12 border border-2 d-none d-sm-none d-md-block d-lg-block cajaTitulo">
+        <div class="col-md-12 col-lg-12 border border-2 d-none d-sm-none d-md-block d-lg-block cajaTituloInicio">
             <div class="">
-                <h1 class="display-3 text-center TituloTienda">
-                    Tienda Kamell
+                <h1 class="display-3 text-center text-white TituloTienda">
+                    Bienvenido a Pcool
                 </h1>
          </div>
          </div>
          <div class="col-md-12 text-center mt-4 d-block d-sm-block d-md-none d-lg-none">
                 <h1 class="lead font-weight-bold d-inline-block p-3 border border-info">
-                    Tienda Kamell
+                    Bienvenido a Pcool
                 </h1>
          </div>
     </div>
@@ -21,29 +21,51 @@
             <div class="row">
                 <div class="col-md-12 mt-2">
                     <div class="border text-center text-white rounded lead mt-2 p-2 categorias" id="Cosmeticos">
-                        Cosmeticos
+                        Ecuentra lo que quieras en un mísmo lugar PCOOL
                     </div>
                     <!--Contenedor de la galeria-->
                     <div class="row mt-2 contenedor" id="galeria">
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
-                            <div class="card shadow">
-                                <div class="card-header p-1">
-                                    <div class="text-center lead small">
-                                        <p></p>
+                            <div class="card shadow tiendas">
+                                <a href="/kamell" class="text-decoration-none">
+                                    <div class="card-body bg-info p-0">
+                                        <div class="text-center text-white">
+                                            <img src="../static/img/logo-kamell.jpeg" class="img-fluid" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                                    <div class="card-body" data-toggle="modal" data-target="#exampleModalLong">
-                                        <img src='' alt="" class="img-fluid rounded" id=''>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
+                            <div class="card shadow tiendas">
+                                <div class="card-body bg-success" data-toggle="modal" data-target="#exampleModalLong">
+                                    <div class="text-center text-white p-1 p-md-4 p-lg-5">
+                                        El Bombazo
                                     </div>
-                                <div class="card-footer text-center bg-white">
-                                    <div class="font-weight-bold">
-                                        Precio :
-                                    </div>
-                                     C$
                                 </div>
                             </div>
                         </div>
-                                
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
+                            <div class="card shadow tiendas">
+                                <div class="card-body bg-secondary" data-toggle="modal" data-target="#exampleModalLong">
+                                    <div class="text-center text-white p-1 p-md-4 p-lg-5">
+                                        El Huracan
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
+                            <div class="card shadow tiendas">
+                                <a href="#" class="text-decoration-none">
+                                    <!--TODO Agregar la clase de modal a body de carta data-toggle="modal" data-target="#exampleModalLong"-->
+                                    <div class="card-body bg-primary">
+                                        <div class="text-center text-white p-1 p-md-4 p-lg-5">
+                                            Apple
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                             </div>
                                 <!--modal-->
                                 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
@@ -102,10 +124,10 @@
                                                                 
                                                             </div>
                                                             <div>
-                                                                <label for="" class="font-weight-bold">
+                                                                <label class="font-weight-bold">
                                                                     Precio:
                                                                 </label>
-                                                                <label for="" id="precio">
+                                                                <label id="precio">
 
                                                                 </label>
                                                             </div>
@@ -116,7 +138,7 @@
                                                             </div>
                                                             <div class="redes">
                                                                 <a href="https://www.facebook.com/profile.php?id=100006455873194" target="_blank" rel="noopener noreferrer">
-                                                                    <span class="icon-facebook2"></span>
+                                                                    <span class="icon-facebook-circled"></span>
                                                                 </a>
                                                                 <a href="http://" target="_blank" rel="noopener noreferrer">
                                                                     <span class="icon-instagram"></span>
@@ -129,10 +151,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>-->
                                         </div>
                                     </div>
                                 </div>

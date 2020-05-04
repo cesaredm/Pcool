@@ -16,146 +16,111 @@
                 </h1>
          </div>
     </div>
-             <div class="container">
-            <!--categoria-->
-            <div class="row">
-                <div class="col-md-12 mt-2">
-                    <div class="border text-center text-white rounded lead mt-2 p-2 categorias" id="Cosmeticos">
-                        Ecuentra lo que quieras en un mísmo lugar PCOOL
+    <!-- modal-->
+    <div class="container">
+        <!-- tiles de tiendas-->
+        <div class="row mt-2" id="tilesTiendas">
+            <div class="col-md-3">
+                <a href="/kamell">
+                    <div class="card shadow">
+                        <div class="card-body p-0 tiendas">
+                            <img src="../static/img/logo-kamell.jpeg" class="img-fluid" alt="">
+                        </div>
                     </div>
-                    <!--Contenedor de la galeria-->
-                    <div class="row mt-2 contenedor" id="galeria">
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
-                            <div class="card shadow tiendas">
-                                <a href="/kamell" class="text-decoration-none">
-                                    <div class="card-body bg-info p-0">
-                                        <div class="text-center text-white">
-                                            <img src="../static/img/logo-kamell.jpeg" class="img-fluid" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="row" id="tileBusquedaGeneral">
+
+        </div>
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <!--Carrusel-->
+                            <div class="col-10 col-sm-6 col-lg-6">
+                                <div id="demo" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ul class="carousel-indicators">
+                                        <li data-target="#demo" data-slide-to="0"
+                                            class="active"></li>
+                                        <li data-target="#demo" data-slide-to="1"></li>
+                                        <li data-target="#demo" data-slide-to="2"></li>
+                                    </ul>
+                                    <!-- imagenes del slide de carrusel -->
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active primerItem">
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
-                            <div class="card shadow tiendas">
-                                <div class="card-body bg-success" data-toggle="modal" data-target="#exampleModalLong">
-                                    <div class="text-center text-white p-1 p-md-4 p-lg-5">
-                                        El Bombazo
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
-                            <div class="card shadow tiendas">
-                                <div class="card-body bg-secondary" data-toggle="modal" data-target="#exampleModalLong">
-                                    <div class="text-center text-white p-1 p-md-4 p-lg-5">
-                                        El Huracan
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 mt-2 elemento">
-                            <div class="card shadow tiendas">
-                                <a href="#" class="text-decoration-none">
-                                    <!--TODO Agregar la clase de modal a body de carta data-toggle="modal" data-target="#exampleModalLong"-->
-                                    <div class="card-body bg-primary">
-                                        <div class="text-center text-white p-1 p-md-4 p-lg-5">
-                                            Apple
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                            </div>
-                                <!--modal-->
-                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">
-                                                    
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row justify-content-center">
-                                                    <!--Carrusel-->
-                                                    <div class="col-10 col-sm-6 col-lg-6">
-                                                        <div id="demo" class="carousel slide" data-ride="carousel">
-                                                            <!-- Indicators -->
-                                                            <ul class="carousel-indicators">
-                                                                <li data-target="#demo" data-slide-to="0"
-                                                                    class="active"></li>
-                                                                <li data-target="#demo" data-slide-to="1"></li>
-                                                                <li data-target="#demo" data-slide-to="2"></li>
-                                                            </ul>
-                                                            <!-- imagenes del slide de carrusel -->
-                                                            <div class="carousel-inner">
-                                                                <div class="carousel-item active primerItem">
-                                                                </div>
-                                                            </div>
-                                                            <!-- control derecho y izquierdo de carrusel -->
-                                                            <a class="carousel-control-prev" href="#demo"
-                                                                data-slide="prev">
-                                                                <span class="carousel-control-prev-icon"></span>
-                                                            </a>
-                                                            <a class="carousel-control-next" href="#demo"
-                                                                data-slide="next">
+                                    <!-- control derecho y izquierdo de carrusel -->
+                                    <a class="carousel-control-prev" href="#demo"
+                                       data-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#demo"
+                                       data-slide="next">
                                                                 <span class="carousel-control-next-icon">
                                                                 </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-10 col-sm-6 col-lg-6">
-                                                        <div>
-                                                            <div class="font-weight-bold small">
-                                                                Descripcion:
-                                                            </div>
-                                                            <div class="small text-justify" id="descripcion">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="mt-lg-5 mt-md-2 mt-1 font-weight-bold" id="nombreProducto">
-                                                                
-                                                            </div>
-                                                            <div>
-                                                                <label class="font-weight-bold">
-                                                                    Precio:
-                                                                </label>
-                                                                <label id="precio">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-10 col-sm-6 col-lg-6">
+                                <div>
+                                    <div class="font-weight-bold small">
+                                        Descripcion:
+                                    </div>
+                                    <div class="small text-justify" id="descripcion">
 
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="font-weight-bold">
-                                                                Contactanos:
-                                                            </div>
-                                                            <div class="redes">
-                                                                <a href="https://www.facebook.com/profile.php?id=100006455873194" target="_blank" rel="noopener noreferrer">
-                                                                    <span class="icon-facebook-circled"></span>
-                                                                </a>
-                                                                <a href="http://" target="_blank" rel="noopener noreferrer">
-                                                                    <span class="icon-instagram"></span>
-                                                                </a>
-                                                                <a href="https://wa.me/50498398802?text=hola%20Ivan" target="_blank">
-                                                                    <span class="icon icon-whatsapp"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mt-lg-5 mt-md-2 mt-1 font-weight-bold" id="nombreProducto">
+
+                                    </div>
+                                    <div>
+                                        <label class="font-weight-bold">
+                                            Precio:
+                                        </label>
+                                        <label id="precio">
+
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-weight-bold">
+                                        Contactanos:
+                                    </div>
+                                    <div class="redes">
+                                        <a href="https://www.facebook.com/profile.php?id=100006455873194" target="_blank" rel="noopener noreferrer">
+                                            <span class="icon-facebook-circled"></span>
+                                        </a>
+                                        <a href="http://" target="_blank" rel="noopener noreferrer">
+                                            <span class="icon-instagram"></span>
+                                        </a>
+                                        <a href="https://wa.me/50498398802?text=hola%20Ivan" target="_blank">
+                                            <span class="icon icon-whatsapp"></span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {%endblock%}

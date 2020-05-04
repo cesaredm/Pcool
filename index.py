@@ -164,20 +164,20 @@ def guardarProductoTienda():
         cursor.close()
     return json.dumps({'status':'Guardado'})
 
-@app.route('/busquedaGeneral',methods = ['POST'])
+@app.route('/busquedaGeneral')
 def busquedaGeneral():
-    if request.method == 'POST':
-        arregloProducts = []
-        dataSearch = request.args.get('valorBuscar')
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM producto WHERE producto.nombre LIKE 'dataSearch['Pbuscar']%'")
-        products = cursor.fetchall()
-        cursor.close()
-        for item in range(len(products)):
-            p = products[item]
-            arregloProducts.append({'id':p[0],'nombre':p[1],'descripcion':p[2],'precio':p[3],'categoria':p[4],'imagen':p[5],'likes':p[6]})
-    return render_template("mostrarBusquedas.html") ,json.dumps(arregloProducts)
+    arregloProducts = []
+    dataSearch = request.args.get('valorBuscar')
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM producto WHERE producto.nombre LIKE '%{}%'".format(dataSearch))
+    products = cursor.fetchall()
+    cursor.close()
+    for item in range(len(products)):
+        p = products[item]
+        print(p)
+        arregloProducts.append({'id':p[0],'nombre':p[1],'descripcion':p[2],'precio':p[3],'categoria':p[4],'imagen':p[5],'likes':p[6]})
+    return json.dumps(arregloProducts)
 
 if __name__ == '__main__':   
     app.run(debug=True)

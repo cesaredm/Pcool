@@ -11,6 +11,7 @@ function iniciar(nombre) {
 $('.card-body').click(function (e) {
     //obtengo valor de id de cada card
     var id = e.target.getAttribute('id');
+    console.log(id)
     //envio en formato json el id con metodo get de ajax
     $.get('/mostrarModal', {idP:id}, function(datos){
         //convertir lo que recibo de python a formato json

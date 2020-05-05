@@ -9,6 +9,7 @@ http.onreadystatechange = function()
 {
     if (this.readyState === 4 && this.status === 200) {
         alert("Listo..!");
+
     }
 }
 http.open("GET", "servidor.php", true);

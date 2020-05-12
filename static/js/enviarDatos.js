@@ -2,6 +2,7 @@ $(document).ready(function () {
     mostrarTienda();
     mostrarProducto();
 });
+//mostrar Tiendas para agregar producto en el apartado de ingreso
 function mostrarTienda() {
     $.ajax({
         url: '/mostrarTiendas',
@@ -16,7 +17,7 @@ function mostrarTienda() {
 
         }
     });
-}
+}//mostrar productos en el apartado de ingresos
 function mostrarProducto() {
     $.ajax({
         url: '/mostrarProducto',
@@ -28,10 +29,10 @@ function mostrarProducto() {
             for (i = 0; i < response.length; i++) {
                 $('#listaProducto').append('<option value="' + response[i].id + '">' + response[i].nombre + '</option>');
             }
-
         }
     });
 }
+//enviar datos de tiendas para ser guardados
 $('#formTienda').submit(function (e) {
     e.preventDefault();
     $.ajax({

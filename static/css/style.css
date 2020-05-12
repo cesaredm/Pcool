@@ -102,3 +102,6 @@ html body
 {
     transform: scale(1.02);
 }
+.icon{
+    cursor: pointer;
+}

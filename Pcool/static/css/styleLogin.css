@@ -1,0 +1,11 @@
+.login{
+    margin-top: 10%;
+}
+
+body{
+    /*background-image: url('../img/fondo.jpg');*/
+    background-color: #383838;
+}
+.card{
+    opacity: 0.9;
+}

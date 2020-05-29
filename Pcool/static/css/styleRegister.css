@@ -1,0 +1,42 @@
+body{
+    background-color: #383838;
+}
+.login{
+    margin-top: 7.5%;
+}
+.rotulo{
+    margin: -15px;
+    background-color: #ffff;
+}
+.formulario{
+    margin: -15px;
+}
+.content-rotulo{
+    font-size: 125%;
+    text-align: justify;
+}
+.content-rotulo p{
+    margin-top: -33%;
+}
+.content-rotulo img{
+
+}
+
+@media (min-width: 320px) and (max-width: 574px) {
+    .row{
+        margin-top: 20%;
+    }
+}
+@media (min-width: 768px) and (max-width: 780px) {
+    .row{
+        margin-top: 20%;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1024px) {
+    .content-rotulo p{
+        margin-top: -33%;
+    }
+    .content-rotulo img{
+        margin-top: 20%;
+    }
+}

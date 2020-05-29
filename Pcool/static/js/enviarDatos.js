@@ -1,4 +1,4 @@
-$(document).ready(function () {
+/*$(document).ready(function () {
     mostrarTienda();
     mostrarProducto();
 });
@@ -92,4 +92,4 @@ $('#formTiendaProducto').submit(function (e) {
             alert(response.status);
         }
     });
-});
+});*/

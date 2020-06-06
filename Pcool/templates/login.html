@@ -6,21 +6,29 @@
     <title>Login Pcool</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/lux.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styleLogin.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/logoPcoolicon.png')}}" type="image/x-icon">
 </head>
 <body>
+    {% from '_macroForm.html' import render_field %}
     <div class="container-fluid">
         <div class="row justify-content-center login">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body p-5">
-                        <div>
-                            <h3 class="">Pcool</h3>
+            <div class="col-12 col-sm-11 col-md-6 col-lg-4">
+                <div class="card rounded">
+                    <div class="card-body pt-5 pb-5 pl-3 pr-3">
+                        <div class="text-center">
+                            <img src="{{url_for('static', filename='img/logoPcoolBlack.png')}}" alt="" class="img-fluid">
                             <p class="">Inicia sesión con tu cuenta</p>
                         </div>
                         <div class="form">
-                            <form action="">
-                                <input type="email" name="" id="" class="form-control mb-3" placeholder="Correo">
-                                <input type="password" name="" id="" class="form-control mb-3" placeholder="Password">
+                            <form action="/validacion_login" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                                <div>
+                                    {{render_field(login.correo, class="form-control mb-3", placeholder="Correo Electronico")}}
+                                </div>
+                                <div>
+                                    {{render_field(login.password, class="form-control mb-3", placeholder="Contraseña")}}
+                                </div>
+                                <p class="text-danger">{{message}}</p>
                                 <button type="submit" class="btn btn-primary btn-block mb-3">Entrar</button>
                             </form>
                         </div>
@@ -41,5 +49,6 @@
             </div>
         </div>
     </div>
+    <script src="{{url_for('static', filename='js/validacionLogin.js')}}"></script>
 </body>
 </html>

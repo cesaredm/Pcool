@@ -1,7 +1,11 @@
 
-.icon-manitaArriba:before { content: '\e800'; } /* '' */
-.icon-manitaAbajo:before { content: '\e801'; } /* '' */
-.icon-facebook-circled:before { content: '\e802'; } /* '' */
+.icon-menu:before { content: '\e800'; } /* '' */
+.icon-cancel:before { content: '\e801'; } /* '' */
+.icon-search:before { content: '\e802'; } /* '' */
+.icon-manitaArriba:before { content: '\e803'; } /* '' */
+.icon-manitaAbajo:before { content: '\e804'; } /* '' */
+.icon-facebook-circled:before { content: '\e805'; } /* '' */
+.icon-user:before { content: '\e806'; } /* '' */
+.icon-user-1:before { content: '\e807'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
 .icon-whatsapp:before { content: '\f232'; } /* '' */
-.icon-facebook-rect:before { content: '\f301'; } /* '' */

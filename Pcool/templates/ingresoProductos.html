@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Producto PCOOL</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cosmo.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styleIngresos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='icons/css/fontello.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/logoPcoolicon.png')}}" type="image/x-icon">
+</head>
+
+<body>
+    {%from '_macroForm.html' import render_field%}
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+            <img src="{{url_for('static', filename='img/logoPcoolWhiteNav.png')}}" alt="" class="">
+        </a>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data -target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="#"></a> </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">Ayuda</a>
+                </li>
+            </ul>
+            <div class="nav-item float-md-right text-white">
+                <a href="/cerrarSesion">
+                    <span class="nav-link icon-user-1 lead d-inline m-0"></span>
+                </a>
+                <div class="d-inline">{{user}}</div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center text-white mt-md-3">Ingreso de Productos</h1>
+        <div class="row justify-content-center mt-md-4">
+            <div class="shadow-md p-4 ml-2 contenedoresIngresosProducto">
+                <div class="form">
+                    <form action="/guardar_producto" method="POST" id="formProducto">
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        <div class="row">
+                            <div class="col-md-4 shadow-sm rounded subdivision">
+                                <img src="{{url_for('static', filename='img/logo-kamell1.jpg')}}" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-md-4 shadow-sm rounded subdivision">
+                                <div>
+                                    {{render_field(datos.nombre, class="form-control text-white bg-dark border-primary", placeholder="Nombre de producto")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.talla, class="form-control text-white bg-dark border-primary", placeholder="Talla de producto")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.color, class="form-control text-white bg-dark border-primary", placeholder="Colores del producto")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.precio, class="form-control text-white bg-dark border-primary", placeholder="Precio de producto")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.marca, class="form-control text-white bg-dark border-primary", placeholder="Marca de Producto")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.categoria, class="form-control text-white bg-dark border-primary")}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 shadow-sm rounded subdivision">
+                                <div>
+                                    {{render_field(datos.genero, class="form-control text-white bg-dark border-primary")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.img1, class="form-control text-white bg-dark border-primary", placeholder="Imagen 1")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.img2, class="form-control text-white bg-dark border-primary", placeholder="Imagen 2")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.img3, class="form-control text-white bg-dark border-primary", placeholder="Imagen 3")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.like, class="form-control text-white bg-dark border-primary", placeholder="Numero de likes")}}
+                                </div>
+                                <div>
+                                    {{render_field(datos.descripcion, class="form-control text-white bg-dark border-primary", placeholder="Descripción de producto")}}
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mt-2 rounded-sm" id="guardarProducto">Guardar
+                                Producto</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

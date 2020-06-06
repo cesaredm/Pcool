@@ -44,3 +44,11 @@ class Producto(Form):
                 self.marca.choices.append(item)
         except mysql as err:
             pass
+        
+    def mostrarProducto(self, cur, NombreTienda):
+        try:
+            cur.execute("SELECT * FROM producto")
+            lista = cur.fetchall()
+        except Exception as ex:
+            print(ex, "error en la funcion mostrarProducto")
+        return lista

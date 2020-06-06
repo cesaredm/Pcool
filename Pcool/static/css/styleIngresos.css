@@ -1,0 +1,19 @@
+body{
+    background-color: #1e2425;
+}
+.contenedoresIngresos{
+    background-color: #343b3c;
+}
+.contenedoresIngresosProducto{
+    background-color: #343b3c;
+}
+@media (min-width:320px) and (max-width:760px){
+    .contenedoresIngresosProducto{
+        background-color: #1e2425;
+    }
+    .subdivision{
+        background-color: #343b3c;
+        margin-top: 3%;
+        padding: 15px;
+    }
+}

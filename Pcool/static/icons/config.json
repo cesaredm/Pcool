@@ -7,28 +7,34 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "2cfb3f2b46b34a1790aec0aa846297b6",
+      "css": "menu",
+      "code": 59392,
+      "src": "entypo"
+    },
+    {
+      "uid": "bf45c39702763f1803b550c36a0ceb12",
+      "css": "cancel",
+      "code": 59393,
+      "src": "entypo"
+    },
+    {
+      "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
+      "css": "search",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
       "uid": "acf41aa4018e58d49525665469e35665",
       "css": "manitaArriba",
-      "code": 59392,
+      "code": 59395,
       "src": "fontawesome"
     },
     {
       "uid": "7533e68038fc6d520ede7a7ffa0a2f64",
       "css": "manitaAbajo",
-      "code": 59393,
+      "code": 59396,
       "src": "fontawesome"
-    },
-    {
-      "uid": "8045477f6a7ef0bd7caff130ad25b88d",
-      "css": "facebook-rect",
-      "code": 62209,
-      "src": "brandico"
-    },
-    {
-      "uid": "33cea6d7bd699348c0d593e105361a51",
-      "css": "facebook-circled",
-      "code": 59394,
-      "src": "typicons"
     },
     {
       "uid": "9d3e9faf68fd4e12def853f0d4e1173b",
@@ -37,10 +43,28 @@
       "src": "fontawesome"
     },
     {
+      "uid": "33cea6d7bd699348c0d593e105361a51",
+      "css": "facebook-circled",
+      "code": 59397,
+      "src": "typicons"
+    },
+    {
       "uid": "4c1ef492f1d2c39a2250ae457cee2a6e",
       "css": "instagram",
       "code": 61805,
       "src": "fontawesome"
+    },
+    {
+      "uid": "56a0672588820ab1a16363e5d07dd22e",
+      "css": "user",
+      "code": 59398,
+      "src": "linecons"
+    },
+    {
+      "uid": "86ee1fc7ff57e9c9c60d8a5e57183776",
+      "css": "user-1",
+      "code": 59399,
+      "src": "iconic"
     }
   ]
 }

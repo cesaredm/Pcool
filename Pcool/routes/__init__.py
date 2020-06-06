@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, g
+from flask import Flask, render_template, request, redirect, url_for, jsonify, g, flash, session
 from Pcool import app
 from Pcool.conexiondb import mysql
 from Pcool.producto import Producto
 from Pcool.categorias import Categoria
 from Pcool.marca import Marca
+from Pcool.tienda import Tienda
+from Pcool.login import Login
 import json
 
 @app.before_request
@@ -21,54 +23,73 @@ def after_request(response):
 
 @app.route('/')
 def inicio():
-     return render_template('inicio.html')
+    if 'user' in session:
+        usuario = session['user']
+    else:
+        usuario = ''
+    return render_template('inicio.html', user=usuario)
 
 @app.route('/login')
-def loginPropietarios():
-    return render_template('login.html')
+def login():
+    login = Login(request.form)
+    return render_template('login.html', login=login)
 
 @app.route('/registro')
 def registro():
     return render_template('Register.html')
 
-@app.route('/validarSesion')
-def validarSesion():
-    nombre = request.args.get('nombre')
-    password = request.args.get('password')
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM usuarios")
-    return render_template('ingresos.html')
+@app.route('/validacion_login', methods=['POST'])
+def validacion_login():
+    v = Login(request.form)
+    v.validar(g.cur)
+    if request.method == 'POST':
+        if 'ingreso_productos' == v.respuesta['url']:
+            logo = v.respuesta['logo']
+            session['userPropietario'] = v.respuesta['nombre']
+            return redirect(url_for('ingreso_productos', logo=logo))
+        elif 'inicio' == v.respuesta['url']:
+            session['user'] = v.respuesta['nombre']       
+            return redirect(url_for('inicio'))
+        elif 'vacio' == v.respuesta['url']:
+            return redirect(url_for('login'))
 
+@app.route('/cerrarSesion')
+def cerrarSesion():
+    if 'user' in session:
+        del session['user']
+        return redirect(url_for('inicio'))
+    if 'userPropietario' in session:
+        del session['userPropietario']
+        return redirect(url_for('inicio'))
+        
 @app.route('/kamell')
 def kamell():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM producto INNER JOIN producto_tienda ON(producto.idProucto=producto_tienda.producto) INNER JOIN tienda ON(tienda.idTienda=producto_tienda.tienda) WHERE tienda.nombre='Kamell'")
-    productosKamell = cursor.fetchall()
-    cursor.close()
-    return render_template('kamell.html', productos=productosKamell)
+    producto = Producto(request.form)
+    productos = producto.mostrarProducto(g.cur, 'kamell')
+    if 'user' in session:
+        user = session['user']
+    else:
+        user=''
+    return render_template('kamell.html',productos = productos, user=user)
     
+@app.route('/productosKamell')
 def mostrarProductosKamell():
+    tienda = request.args.get('nombreTienda')
     p = []
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM producto INNER JOIN producto_tienda ON(producto.idProucto=producto_tienda.producto) INNER JOIN tienda ON(tienda.idTienda=producto_tienda.tienda) WHERE tienda.nombre='Kamell'")
-    productosKamell = cursor.fetchall()
-    cursor.close()
+    product = Producto(request.form)
+    productosKamell = product.mostrarProducto(g.cur, tienda)
     for item in range(len(productosKamell)):
         producto = productosKamell[item]
-        p.append({'id':producto[0],'nombre':producto[1],'descripcion':producto[2],'precio':producto[3],'categoria':producto[4],'imagen':producto[5],'likes':producto[6]})
+        p.append({'id':producto[0],'nombre':producto[1],'imagen':producto[8],'likes':producto[11]})
     return json.dumps(p)
 
 @app.route('/ingresos', methods=['GET', 'POST'])
 def ingresos():
-    formProducto = Producto(request.form)
-    formProducto.listaCategoria(g.cur)
     formCategoria = Categoria(request.form)
     formMarca = Marca(request.form)
-    formProducto.listaMarca(g.cur)
-    return render_template('ingresos.html',datos=formProducto, categorias=formCategoria, marca=formMarca)
+    tienda = Tienda(request.form)
+    tienda.listapropietario(g.cur)
+    return render_template('ingresos.html', categorias=formCategoria, marca=formMarca, tienda=tienda)
 
  #Metodo para guardar Categorias
 @app.route('/guardar_categorias', methods=['POST'])
@@ -86,6 +107,18 @@ def guardar_marca():
         fmarca.guardar(g.cur)
     return redirect(url_for('ingresos'))
 
+#
+@app.route('/ingreso_productos')
+def ingreso_productos():
+    formProducto = Producto(request.form)
+    formProducto.listaCategoria(g.cur)
+    formProducto.listaMarca(g.cur)
+    if 'userPropietario' in session:
+        propietario = session['userPropietario']
+    else:
+        propietario = ''
+    return render_template('ingresoProductos.html', datos=formProducto, user = propietario)
+
 #Metodo para guardar productos
 @app.route('/guardar_producto', methods=['POST'])
 def guardar_producto():
@@ -93,26 +126,27 @@ def guardar_producto():
     p.guardar(g.cur)
     '''if request.method == 'POST' and p.validate():
         p.guardar(g.cur)'''
-    return redirect(url_for('ingresos'))
+    return redirect(url_for('ingreso_productos'))
     
 @app.route('/mostrarModal')
 def mostrarModal():
     # obtengo el id de producto en idP 
-    idP = request.args.get('idP')
-    #conexion ala base de datos
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    #ejecuto la consulta
-    cursor.execute("SELECT * FROM producto WHERE idProucto='{}'".format(idP))
-    #obtengo los datos en una tupla
-    datos = cursor.fetchall()
-    #cierro la conexion a bd
-    cursor.close()
-    #obtengo el primer arreglo de la tupla 
-    producto = datos[0]
-    #creo un diccionario con los datos para luego mandarlo como json con json.dumps
-    res = {'nombre':producto[1], 'descripcion':producto[2], 'precio': producto[3], 'imagen':producto[5]}
-    #retorno el diccionario creado
+    idP = request.args.get('idP', "vacio")
+    if idP != 'vacio':
+        #conexion ala base de datos
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        #ejecuto la consulta
+        cursor.execute("SELECT * FROM producto WHERE id={}".format(idP))
+        #obtengo los datos en una tupla
+        datos = cursor.fetchall()
+        #cierro la conexion a bd
+        cursor.close()
+        #obtengo el primer arreglo de la tupla 
+        producto = datos[0]
+        #creo un diccionario con los datos para luego mandarlo como json con json.dumps
+        res = {'nombre':producto[1], 'descripcion':producto[12],'imagen':producto[8]}
+        #retorno el diccionario creado
     return json.dumps(res)
     
 @app.route('/obtenerLike',methods=['POST'])
@@ -160,16 +194,12 @@ def mostrarProducto():
     return json.dumps(arreglo)
     
 
-@app.route('/guardarTienda',methods=['POST'])
-def guardarTienda():
-    if request.method == 'POST':
-        tienda = request.form
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO tienda(nombre, direccion,tel1,tel2,facebook,whatsapp,instagram) VALUES('{}','{}','{}','{}','{}','{}','{}')".format(tienda['nombreTienda'],tienda['direccionTienda'],tienda['tel1'],tienda['tel2'],tienda['facebookTienda'],tienda['whatsappTienda'],tienda['instagramTienda']))   
-        conn.commit()
-        cursor.close()
-    return redirect(url_for('/ingresos')),json.dumps({'estado':'Tienda Agregada Exitosamente'})
+@app.route('/guardar_tienda',methods=['POST'])
+def guardar_tienda():
+    tienda = Tienda(request.form)
+    if request.method == 'POST' and tienda.validate():
+        tienda.guardar(g.cur)
+    return redirect(url_for('ingresos'))
     
 @app.route('/guardarProductoTienda', methods = ['POST'])
 def guardarProductoTienda():

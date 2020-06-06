@@ -20,7 +20,7 @@ $('.card-body').click(function (e) {
         //nombre Producto o tienda
         $('.modal-title').text(p.nombre);
         //img para slide de modal
-        $('.primerItem').html('<img src="'+p.imagen+'" alt="'+p.nombre+'" class="img-fluid">');
+        $('.primerItem').html('<img src="../static/img/'+p.imagen+'" alt="'+p.nombre+'" class="img-fluid">');
         //descripcion de producto en el modal
         $('#descripcion').text(p.descripcion);
         //nombre de producto en el modal

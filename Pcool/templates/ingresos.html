@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ingresos de Datos</title>
+    <link rel="icon" href="{{url_for('static', filename='img/logoPcool1.png')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/cosmo.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styleIngresos.css')}}">
 </head>
 
 <body>
     <script>
-        setTimeout(function (){
+        setTimeout(function () {
             var mensaje = document.getElementById('message');
             mensaje.remove();
         }, 2000);
@@ -26,94 +28,67 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <div class="text-center"></div>
-        <h1 class="display-4">Ingreso de Datos</h1>
-    </div>
     <div class="container">
-        <div class="row justify-content-center mb-2">
-            <div class="col-lg-5 border border shadow rounded p-4 contenedoresIngresos">
-                <h1 class="lead text-center">Ingreso de Categorias</h1>
-                <div class="form">
-                    <form action="/guardar_categorias" method="POST" id="formCategoria">
-                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
-                        <div>
-                            {{render_field(categorias.nombre, class="form-control", placeholder="Nombre de categoria")}}
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-2" id="guardarCategoria">Guardar Categoria</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-5 border border shadow rounded p-4 ml-2 contenedoresIngresos">
-                <div class="form">
-                    <h1 class="lead text-center">Ingreso de Productos</h1>
-                    <form action="/guardar_producto" method="POST" id="formProducto">
-                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
-                        <div>
-                            {{render_field(datos.nombre, class="form-control", placeholder="Nombre de producto")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.talla, class="form-control", placeholder="Talla de producto")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.color, class="form-control", placeholder="Colores del producto")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.precio, class="form-control", placeholder="Precio de producto")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.marca, class="form-control", placeholder="Marca de Producto")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.categoria, class="form-control")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.genero, class="form-control")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.img1, class="form-control", placeholder="Imagen 1")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.img2, class="form-control", placeholder="Imagen 2")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.img3, class="form-control", placeholder="Imagen 3")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.like, class="form-control", placeholder="Numero de likes")}}
-                        </div>
-                        <div>
-                            {{render_field(datos.descripcion, class="form-control", placeholder="Descripción de producto")}}
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-2" id="guardarProducto">Guardar Producto</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-5 border rounded shadow p-4 contenedoresIngresos">
-                <h1 class="lead text-center">
-                    Ingresar Marcas
-                </h1>
-                <div class="form">
-                    <form action="/guardar_marca" method="POST" id="formMarca">
-                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
-                        <div>
-                            {{render_field(marca.nombre, class="form-control", placeholder="Nombre de Marca")}}
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-2" id="GuardarMarca">Guardar Marca</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-5 border rounded shadow p-4 ml-2 contenedoresIngresos">
-                <h1 class="lead text-center">
-                    Proucto con Tienda
-                </h1>
-                <form action="" id="formTiendaProducto">
-                    
-                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        <h2 class="text-white text-center">Ingreso de datos Pcool</h2>
+    <div class="row justify-content-center mb-2">
+        <div class="col-lg-5 shadow rounded p-4 contenedoresIngresos">
+            <h1 class="lead text-center text-white">Ingreso de Categorias</h1>
+            <div class="form">
+                <form action="/guardar_categorias" method="POST" id="formCategoria">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <div>
+                        {{render_field(categorias.nombre, class="form-control text-white bg-dark border-primary", placeholder="Nombre de categoria")}}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-2" id="guardarCategoria">Guardar
+                        Categoria</button>
                 </form>
             </div>
         </div>
+        
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-5 rounded shadow p-4 contenedoresIngresos">
+            <h1 class="lead text-center text-white">
+                Ingresar Marcas
+            </h1>
+            <div class="form">
+                <form action="/guardar_marca" method="POST" id="formMarca">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <div>
+                        {{render_field(marca.nombre, class="form-control text-white bg-dark border-primary", placeholder="Nombre de Marca")}}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-2" id="GuardarMarca">Guardar Marca</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-5 rounded shadow p-4 ml-2 contenedoresIngresos">
+            <h1 class="lead text-center text-white">
+                Ingresar Tiendas
+            </h1>
+            <form action="/guardar_tienda" method="POST" id="formTiendaProducto">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                <div class="form-group">
+                    {{render_field(tienda.nombre, class="form-control text-white bg-dark border-primary", placeholder="Nombre de tienda")}}
+                </div>
+                <div class="form-group">
+                    {{render_field(tienda.direccion, class="form-control text-white bg-dark border-primary", placeholder="Direccion de tienda")}}
+                </div>
+                <div class="form-group">
+                    {{render_field(tienda.telefono, class="form-control text-white bg-dark border-primary", placeholder="Telefono de tienda")}}
+                </div>
+                <div class="form-group">
+                    {{render_field(tienda.facebook, class="form-control text-white bg-dark border-primary", placeholder="Facebook de tienda")}}
+                </div>
+                <div class="form-group">
+                    {{render_field(tienda.instagram, class="form-control text-white bg-dark border-primary", placeholder="Instagram de tienda")}}
+                </div>
+                <div class="form-group">
+                    {{render_field(tienda.propietario, class="form-control text-white bg-dark border-primary", placeholder="Propietario de tienda")}}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar Tienda</button>
+            </form>
+        </div>
+    </div>
     </div>
     <script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/enviarDatos.js')}}"></script>

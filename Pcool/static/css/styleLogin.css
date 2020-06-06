@@ -9,3 +9,8 @@ body{
 .card{
     opacity: 0.9;
 }
+img{
+    width: 35%;
+    margin-top: -20%;
+    margin-bottom: -15%;
+}

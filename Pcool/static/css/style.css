@@ -38,6 +38,9 @@ html body
     text-decoration: none;
     font-size: 150%;
 }
+.icon-manitaArriba{
+    cursor: pointer;
+}
 .redes a:hover
 {
     color: black;
@@ -63,8 +66,9 @@ html body
 {
     color: white;
 }
-.dropdown li a:hover{
-    color:black;
+.dropdown .dropdown-item:hover
+{
+    background-color: #1e2425;
 }
 /*estilo para los submenus*/
 .dropdown-submenu {

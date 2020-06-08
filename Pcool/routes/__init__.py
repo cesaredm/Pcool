@@ -21,13 +21,14 @@ def after_request(response):
     g.cur.close()
     return response
 
-@app.route('/')
+@app.route('/', methods = ['GET'])
 def inicio():
-    if 'user' in session:
-        usuario = session['user']
-    else:
-        usuario = ''
-    return render_template('inicio.html', user=usuario)
+    if request.method == 'GET':
+        if 'user' in session:
+            usuario = session['user']
+        else:
+            usuario = ''
+        return render_template('inicio.html', user=usuario)
 
 @app.route('/login')
 def login():
@@ -53,14 +54,18 @@ def validacion_login():
         elif 'vacio' == v.respuesta['url']:
             return redirect(url_for('login'))
 
-@app.route('/cerrarSesion')
+@app.route('/cerrarSesion', methods=['GET'])
 def cerrarSesion():
-    if 'user' in session:
-        del session['user']
-        return redirect(url_for('inicio'))
-    if 'userPropietario' in session:
-        del session['userPropietario']
-        return redirect(url_for('inicio'))
+    if request.method == 'GET':
+        if 'user' in session:
+            del session['user']
+            return redirect(url_for('inicio'))
+        elif 'userPropietario' in session:
+            del session['userPropietario']
+            return redirect(url_for('inicio'))
+        else:
+            redirect(url_for('inicio'))
+            
         
 @app.route('/kamell')
 def kamell():
@@ -108,16 +113,17 @@ def guardar_marca():
     return redirect(url_for('ingresos'))
 
 #
-@app.route('/ingreso_productos')
+@app.route('/ingreso_productos', methods=['GET'])
 def ingreso_productos():
-    formProducto = Producto(request.form)
-    formProducto.listaCategoria(g.cur)
-    formProducto.listaMarca(g.cur)
-    if 'userPropietario' in session:
-        propietario = session['userPropietario']
-    else:
-        propietario = ''
-    return render_template('ingresoProductos.html', datos=formProducto, user = propietario)
+    if request.method == 'GET':
+        formProducto = Producto(request.form)
+        formProducto.listaCategoria(g.cur)
+        formProducto.listaMarca(g.cur)
+        if 'userPropietario' in session:
+            propietario = session['userPropietario']
+            return render_template('ingresoProductos.html', datos=formProducto, user = propietario)
+        else:
+            return redirect(url_for('inicio'))
 
 #Metodo para guardar productos
 @app.route('/guardar_producto', methods=['POST'])
@@ -145,22 +151,19 @@ def mostrarModal():
         #obtengo el primer arreglo de la tupla 
         producto = datos[0]
         #creo un diccionario con los datos para luego mandarlo como json con json.dumps
-        res = {'nombre':producto[1], 'descripcion':producto[12],'imagen':producto[8]}
+        res = {'nombre':producto[1], 'precio':str(producto[4]) ,'descripcion':producto[12],'imagen':producto[8]}
         #retorno el diccionario creado
     return json.dumps(res)
     
-@app.route('/obtenerLike',methods=['POST'])
-def obtenerLike():
-    if request.method == 'POST':
-        likes = request.args.get('like')
-        idProducto = request.args.get('idP')
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.callproc('agregarLike',[idProducto, likes])
-        cursor.close()
-        print(likes,idProducto)
-        res = {'status':200, 'id':idProducto,'likes':likes}
-    return json.dumps(res)
+@app.route('/addLike', methods=['GET'])
+def addLike():
+    if request.method == 'GET':
+        likes = request.args.get('likes')
+        idProducto = request.args.get('id')
+        product = Producto(request.form)
+        product.addLikes(g.cur, idProducto, 1)
+        product.obtenerProduct(g.cur, idProducto)
+        return json.dumps(product.product)
     
 @app.route('/mostrarTiendas', methods=['POST'])
 def mostrarTiendas():

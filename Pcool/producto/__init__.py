@@ -15,6 +15,7 @@ class Producto(Form):
     img3 = TextField()
     like = DecimalField()
     descripcion = TextField("",[validators.required()])
+    product = {}
     
     def guardar(self, cur):
         try:
@@ -52,3 +53,20 @@ class Producto(Form):
         except Exception as ex:
             print(ex, "error en la funcion mostrarProducto")
         return lista
+    
+    def addLikes(self,cur, idP, likes):
+        try:
+            params = [idP ,likes]
+            cur.callproc('addLike',params)
+        except Exception as ex:
+            print(ex)
+        
+    def obtenerProduct(self, cur, id):
+        try:
+            cur.execute("SELECT * FROM producto WHERE id = {}".format(id))
+            lista = cur.fetchall()
+            p = lista[0]
+            self.product['id'] = p[0]
+            self.product['likes'] = p[11]
+        except Exception as ex:
+            print(ex)

@@ -7,6 +7,15 @@ body{
 .contenedoresIngresosProducto{
     background-color: #343b3c;
 }
+.dropdown .dropdown-item
+{
+    color: white;
+}
+.dropdown .dropdown-item:hover
+{
+    background-color: #1e2425;
+}
+
 @media (min-width:320px) and (max-width:760px){
     .contenedoresIngresosProducto{
         background-color: #1e2425;

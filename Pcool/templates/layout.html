@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='icons/css/fontello.css')}}">
     <link rel="shortcut icon" href="{{url_for('static', filename='img/logoPcoolicon.png')}}" type="image/x-icon">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top menuPrincipal">
         <a class="navbar-brand" href="#">
@@ -32,15 +33,22 @@
                     <a href="#" class="nav-item" id="Tienda"></a>
                 </li>
             </ul>
-            <div class="nav-item float-md-right text-white">
-                <a href="" class="text-white text-decoration-none" id="iconUser">
+            <li class="nav-item	dropdown list-unstyled" id='sesion'> 
+                <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="iconUser"> 
                     <span class="nav-link icon-user-1 lead d-inline m-0"></span>
-                </a>
-                <div class="d-inline" id="nombreUser">{{user}}</div>
-                <ul class="text-center p-1 list-unstyled bg-dark rounded position-absolute" id="opcionSesion">
-                    <li class="p-2"><a href="/cerrarSesion" class="text-white text-decoration-none">Cerrar Sesion</a></li>
-                </ul>
-            </div>
+                    <p id='nombreUser' class="d-inline">{{user}}</p>
+                 </a>
+                <div class="dropdown-menu rounded bg-dark p-1" aria-labelledby="navbarDropdown"> 
+                    <a class="dropdown-item rounded" href="#">
+                        Perfil
+                    </a> 
+                    <div class="dropdown-divider">
+                    </div> 
+                    <a class="dropdown-item rounded" href="/cerrarSesion">
+                        Cerrar Sesión
+                    </a>
+                </div>
+            </li>
             <div class="nav-item text-white">
                 <span class="nav-link icon-search lead"></span>
             </div>
@@ -59,6 +67,7 @@
     <script src="{{url_for('static', filename='js/acomodarImgs.js')}}"></script>
     <script src="{{url_for('static', filename='js/validacionLogin.js')}}"></script>
     <script src="{{url_for('static', filename='js/busquedas.js')}}"></script>
-    <script src="{{url_for('static', filename='js/clickTienda.js')}}"></script>
+    <script src="{{url_for('static', filename='js/clickLike.js')}}"></script>
 </body>
+
 </html>

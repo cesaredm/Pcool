@@ -11,7 +11,6 @@ function iniciar(nombre) {
 $('.card-body').click(function (e) {
     //obtengo valor de id de cada card
     var id = e.target.getAttribute('id');
-    console.log(id)
     //envio en formato json el id con metodo get de ajax
     $.get('/mostrarModal', {idP:id}, function(datos){
         //convertir lo que recibo de python a formato json
@@ -30,28 +29,3 @@ $('.card-body').click(function (e) {
 
     });
 });
-
-    $('.icon-manitaArriba').click(function(e) {
-        var id = parseInt(e.target.getAttribute('id'));
-        var valor = e.target.getAttribute('name');
-        var likes = parseInt(valor);
-        console.log(id, likes);
-        
-        guardarLike(id,1);
-    });
-
-    function guardarLike(id, likes) {
-        $.ajax({
-            url:'/obtenerLike?idP='+id+'&like='+likes,
-            data:{/*
-                idProduct:id,
-                like:likes*/
-                },
-            type:'POST',
-            dataType:'json',
-            success: function (response) {
-                console.log(response.status, response.id, response.likes);
-                
-            }
-        });
-    }

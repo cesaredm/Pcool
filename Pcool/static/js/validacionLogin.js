@@ -1,28 +1,27 @@
 $(document).ready(function(){
-    validarSesion()
+    validarSesionUser()
+    validarSesionPropietario();
 });
 
-function validarSesion(params) {
-    $('#iconUser').hide();
+function validarSesionUser(params) {
+    $('#sesion').hide();
     nombreUser = $('#nombreUser').text();
-    console.log(nombreUser);
-    
     if(nombreUser == "")
     {
-        $('#iconUser').hide();
-        $('#inicioSesion').show();
+        $('#sesion').hide();
     }else{
-        $('#iconUser').show();
-        $('#inicioSesion').hide();
+        $('#sesion').show();
     }
 }
 
-$('#nombreUser').click(function(){
-    opciones = document.getElementById('opcionSesion');
-    if(opciones.style.display == "block"){
-        opciones.style.display = 'none';
+function validarSesionPropietario()
+{
+    $('#sesionP').hide();
+    nombreUser = $('#nombreUserP').text();
+    if(nombreUser == "")
+    {
+        $('#sesionP').hide();
     }else{
-        opciones.style.display = 'block'
+        $('#sesionP').show();
     }
-    console.log('hola');
-});
+}

@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/cosmo.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styleIngresos.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='icons/css/fontello.css')}}">
-    <link rel="shortcut icon" href="{{url_for('static', filename='img/logoPcoolicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('static', filename='img/logos/logoPcoolicon.png')}}" type="image/x-icon">
 </head>
 
 <body>
     {%from '_macroForm.html' import render_field%}
     <nav class="navbar navbar-expand-md navbar-dark sticky-top menuPrincipal">
         <a class="navbar-brand" href="#">
-            <img src="{{url_for('static', filename='img/logoPcoolWhiteNav.png')}}" alt="" class="">
+            <img src="{{url_for('static', filename='img/logos/logoPcoolWhiteNav.png')}}" alt="" class="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,21 +30,25 @@
                 <li class="nav-item" id="inicioSesion">
                     <a href="#" class="nav-link"></a>
                 </li>
-                <li class="navbar-nav">
-                    <a href="#" class="nav-item" id="Tienda"></a>
+                <li class="nav-item">
+                    <a href="#/ingresos" class="nav-link" id="">Ingresos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/productos" class="nav-link">Productos</a>
                 </li>
             </ul>
-            <li class="nav-item	dropdown list-unstyled" id='sesionP'> 
-                <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="iconUser"> 
+            <li class="nav-item	dropdown list-unstyled" id='sesionP'>
+                <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="iconUser">
                     <span class="nav-link icon-user-1 lead d-inline m-0"></span>
                     <p id='nombreUserP' class="d-inline">{{user}}</p>
-                 </a>
-                <div class="dropdown-menu rounded bg-dark p-1" aria-labelledby="navbarDropdown"> 
+                </a>
+                <div class="dropdown-menu rounded bg-dark p-1" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item rounded" href="#">
                         Perfil
-                    </a> 
+                    </a>
                     <div class="dropdown-divider">
-                    </div> 
+                    </div>
                     <a class="dropdown-item rounded" href="/cerrarSesion">
                         Cerrar Sesión
                     </a>
@@ -56,60 +60,71 @@
         </div>
     </nav>
     <div class="container">
-        <h1 class="text-center text-white mt-md-3">Ingreso de Productos</h1>
-        <div class="row justify-content-center mt-md-4">
-            <div class="shadow-md p-4 ml-2 contenedoresIngresosProducto">
-                <div class="form">
-                    <form action="/guardar_producto" method="POST" id="formProducto">
-                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
-                        <div class="row">
-                            <div class="col-md-4 shadow-sm rounded subdivision">
-                                <img src="{{url_for('static', filename='img/logo-kamell1.jpg')}}" alt="" class="img-fluid">
+        <div id="Ingresos">
+            <h1 class="text-center text-white mt-md-3">Ingreso de Productos</h1>
+            <div class="row justify-content-center mt-md-4">
+                <div class="shadow-md p-4 ml-2 contenedoresIngresosP">
+                    <div class="form">
+                        <form action="/guardar_producto" method="POST" id="formProducto">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                            <div class="row">
+                                <div class="col-md-4 shadow-sm rounded subdivision">
+                                    <img src="{{url_for('static', filename='img/logo-kamell1.jpg')}}" alt=""
+                                        class="img-fluid">
+                                </div>
+                                <div class="col-md-4 shadow-sm rounded subdivision">
+                                    <div>
+                                        {{render_field(datos.nombre, class="form-control text-white bg-dark border-primary", placeholder="Nombre de producto")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.talla, class="form-control text-white bg-dark border-primary", placeholder="Talla de producto")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.color, class="form-control text-white bg-dark border-primary", placeholder="Colores del producto")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.precio, class="form-control text-white bg-dark border-primary", placeholder="Precio de producto")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.marca, class="form-control text-white bg-dark border-primary", placeholder="Marca de Producto")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.categoria, class="form-control text-white bg-dark border-primary")}}
+                                    </div>
+                                </div>
+                                <div class="col-md-4 shadow-sm rounded subdivision">
+                                    <div>
+                                        {{render_field(datos.genero, class="form-control text-white bg-dark border-primary")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.img1, class="form-control text-white bg-dark border-primary", placeholder="Imagen 1")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.img2, class="form-control text-white bg-dark border-primary", placeholder="Imagen 2")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.img3, class="form-control text-white bg-dark border-primary", placeholder="Imagen 3")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.like, class="form-control text-white bg-dark border-primary", placeholder="Numero de likes")}}
+                                    </div>
+                                    <div>
+                                        {{render_field(datos.descripcion, class="form-control text-white bg-dark border-primary", placeholder="Descripción de producto")}}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block mt-2 rounded-sm"
+                                    id="guardarProducto">Guardar Producto</button>
                             </div>
-                            <div class="col-md-4 shadow-sm rounded subdivision">
-                                <div>
-                                    {{render_field(datos.nombre, class="form-control text-white bg-dark border-primary", placeholder="Nombre de producto")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.talla, class="form-control text-white bg-dark border-primary", placeholder="Talla de producto")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.color, class="form-control text-white bg-dark border-primary", placeholder="Colores del producto")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.precio, class="form-control text-white bg-dark border-primary", placeholder="Precio de producto")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.marca, class="form-control text-white bg-dark border-primary", placeholder="Marca de Producto")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.categoria, class="form-control text-white bg-dark border-primary")}}
-                                </div>
-                            </div>
-                            <div class="col-md-4 shadow-sm rounded subdivision">
-                                <div>
-                                    {{render_field(datos.genero, class="form-control text-white bg-dark border-primary")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.img1, class="form-control text-white bg-dark border-primary", placeholder="Imagen 1")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.img2, class="form-control text-white bg-dark border-primary", placeholder="Imagen 2")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.img3, class="form-control text-white bg-dark border-primary", placeholder="Imagen 3")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.like, class="form-control text-white bg-dark border-primary", placeholder="Numero de likes")}}
-                                </div>
-                                <div>
-                                    {{render_field(datos.descripcion, class="form-control text-white bg-dark border-primary", placeholder="Descripción de producto")}}
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block mt-2 rounded-sm" id="guardarProducto">Guardar
-                                Producto</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="productos">
+            <h1 class="text-center text-white mt-md-3">Productos Guardados</h1>
+            <div class="row justify-content-center mt-md-4">
+                <div class="shadow-md p-4 ml-2 contenedoresIngresosP" id="mostrarProductos">
+
                 </div>
             </div>
         </div>
@@ -117,6 +132,7 @@
     <script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/validacionLogin.js')}}"></script>
+    <script src="{{url_for('static', filename='js/SPA.js')}}"></script>
 </body>
 
 </html>

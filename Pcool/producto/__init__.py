@@ -16,6 +16,7 @@ class Producto(Form):
     like = DecimalField()
     descripcion = TextField("",[validators.required()])
     product = {}
+    listaProduct = []
     
     def guardar(self, cur):
         try:
@@ -50,6 +51,9 @@ class Producto(Form):
         try:
             cur.execute("SELECT * FROM producto")
             lista = cur.fetchall()
+            for item in range(len(lista)):
+                p = lista[item];
+                self.listaProduct.append({'id':str(p[0]),'nombre':p[1],'talla':p[2],'color':p[3],'precio':str(p[4]),'marca':str(p[5]),'categoria':str(p[6])})
         except Exception as ex:
             print(ex, "error en la funcion mostrarProducto")
         return lista
@@ -61,7 +65,7 @@ class Producto(Form):
         except Exception as ex:
             print(ex)
         
-    def obtenerProduct(self, cur, id):
+    def obtenerLikeProduct(self, cur, id):
         try:
             cur.execute("SELECT * FROM producto WHERE id = {}".format(id))
             lista = cur.fetchall()

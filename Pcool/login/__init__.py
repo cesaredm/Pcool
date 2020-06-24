@@ -28,6 +28,5 @@ class Login(Form):
                         pass
             else:
                 self.respuesta['url'] = 'vacio'
-            print(self.respuesta)
         except Exception as ex:
             print(ex)

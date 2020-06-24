@@ -130,8 +130,8 @@ def ingreso_productos():
 def guardar_producto():
     p = Producto(request.form)
     p.guardar(g.cur)
-    '''if request.method == 'POST' and p.validate():
-        p.guardar(g.cur)'''
+    if request.method == 'POST':
+        p.guardar(g.cur)
     return redirect(url_for('ingreso_productos'))
     
 @app.route('/mostrarModal')
@@ -162,7 +162,7 @@ def addLike():
         idProducto = request.args.get('id')
         product = Producto(request.form)
         product.addLikes(g.cur, idProducto, 1)
-        product.obtenerProduct(g.cur, idProducto)
+        product.obtenerLikeProduct(g.cur, idProducto)
         return json.dumps(product.product)
     
 @app.route('/mostrarTiendas', methods=['POST'])
@@ -182,19 +182,13 @@ def mostrarTiendas():
             tienda.append({'id':t[0],'nombre':t[1]})
     return json.dumps(tienda) 
 
-@app.route('/mostrarProducto',methods=['POST'])
+@app.route('/mostrarProducto',methods=['GET'])
 def mostrarProducto():
-    if request.method == 'POST':
-        arreglo = []
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.execute("SELECT idProucto,nombre FROM producto")   
-        resultados = cursor.fetchall()
-        cursor.close()
-        for item in range(len(resultados)):
-            p = resultados[item]
-            arreglo.append({'id':p[0],'nombre':p[1]})
-    return json.dumps(arreglo)
+    if request.method == 'GET':
+        productos = Producto(request.form);
+        productos.mostrarProducto(g.cur, "Kamell")
+        listaProducts = productos.listaProduct
+    return json.dumps(listaProducts)
     
 
 @app.route('/guardar_tienda',methods=['POST'])

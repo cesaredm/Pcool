@@ -1,10 +1,14 @@
 body{
     background-color: #1e2425;
 }
+#productos
+{
+    display: none;
+}
 .contenedoresIngresos{
     background-color: #343b3c;
 }
-.contenedoresIngresosProducto{
+.contenedoresIngresosP{
     background-color: #343b3c;
 }
 .dropdown .dropdown-item
@@ -16,8 +20,9 @@ body{
     background-color: #1e2425;
 }
 
+
 @media (min-width:320px) and (max-width:760px){
-    .contenedoresIngresosProducto{
+    .contenedoresIngresosP{
         background-color: #1e2425;
     }
     .subdivision{
